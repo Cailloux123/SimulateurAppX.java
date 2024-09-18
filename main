@@ -1,5 +1,5 @@
 import java.util.Random;
-
+import javax.swing.JOptionPane;
 /**
  * Programme principal avec la m�thode main
  * 
@@ -32,26 +32,51 @@ public class SimulateurAppX {
 
 
 		// ajouter ici le code de d�placement du robot
-
+		boolean Vict = false;
+		int Grav1 = 0;
+		int sommeGrav = 0;
+		int Victime1 = 0;
 		for (int j = 0; j <= 3; j = j + 1) {
-			for (int i = 0; i <= 8; i = i + 1)
+			for (int i = 0; i <= 8; i = i + 1) {
 				robot.avancer();
+				Vict=robot.isSurVictime();
+			}
 			robot.tournerGauche();
 			robot.avancer();
+			Vict=robot.isSurVictime();
 			robot.tournerGauche();
-			for (int i = 0; i <= 8; i = i + 1)
+			for (int i = 0; i <= 8; i = i + 1) {
 				robot.avancer();
+				Vict=robot.isSurVictime();
+			}
 			robot.tournerDroite();
 			robot.avancer();
+			Vict=robot.isSurVictime();
 			robot.tournerDroite();
 		}
-		for (int i = 0; i <= 8; i = i + 1)
+		for (int i = 0; i <= 8; i = i + 1) {
 			robot.avancer();
+			Vict=robot.isSurVictime();
+		}
 		robot.tournerGauche();
 		robot.avancer();
+		Vict=robot.isSurVictime();
 		robot.tournerGauche();
-		for (int i = 0; i <= 8; i = i + 1)
+		for (int i = 0; i <= 8; i = i + 1) {
 			robot.avancer();
-		
+			Vict=robot.isSurVictime();
+		}
+		if (Vict == true) {
+			Victime1 = Victime1 +1;
+			int Grav = robot.detecterGravite();
+			if (Grav1 < Grav) {
+				Grav1 = Grav;
+				sommeGrav = sommeGrav + Grav;
+			}
+		}
+		int moyenneGrav = sommeGrav / Victime1;
+			
 
 	}
+
+}
