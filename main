@@ -1,4 +1,5 @@
 import java.util.Random;
+
 /**
  * Programme principal avec la m�thode main
  * 
@@ -9,26 +10,30 @@ public class SimulateurAppX {
 
 	public static void main(String[] args) {
 		// cr�ation de l'environnement et r�cup�ration du terrain
+		
 		Terrain terrain = Environnement.creerEnvironnement(10, 10);
 
 		// cr�ation du robot
+		
 		Robot robot = new Robot(0, 0, "sud");
 		robot.setVitesse(15);
-		// ajout du robot sur le terrain
-		terrain.ajouterRobot(robot);
-		// mise � jour des composants graphiques
-		terrain.updateIHM();
-		// ajouter les victimes
-
-		Random Victime = new Random();
-		int nbvictime=Victime.nextInt(6)+1;
-		terrain.ajouterNombreDeVictimes(nbvictime);
 		
+		// ajouter les victimes
+		
+		terrain.ajouterPlusieursVictimes();
+		
+		// ajout du robot sur le terrain
+		
+		terrain.ajouterRobot(robot);
+		
+		// mise � jour des composants graphiques
+		
+		terrain.updateIHM();
+
+
 		// ajouter ici le code de d�placement du robot
 
-		int a;
-		a = 1;
-		for (int j = 0 ; j <= 3 ; j=j+1) {
+		for (int j = 0; j <= 3; j = j + 1) {
 			for (int i = 0; i <= 8; i = i + 1)
 				robot.avancer();
 			robot.tournerGauche();
@@ -47,15 +52,6 @@ public class SimulateurAppX {
 		robot.tournerGauche();
 		for (int i = 0; i <= 8; i = i + 1)
 			robot.avancer();
-		boolean aze;
-		aze=false;
-		while (a <=6) {
-			aze=robot.isSurVictime();
-			if (aze = true) {
-				robot.detecterGravite();
-				
-			}
-		}
-	}
+		
 
-}
+	}
